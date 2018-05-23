@@ -1,0 +1,32 @@
+<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+  <div class="row">
+    <div class="input-field col s6">
+      <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="employer.firstName" required>
+      <label [attr.data-error]="FirstName.errors!=null?(FirstName.errors.required?'Required field!':'Maximum 30 characters allowed'):''">First Name</label>
+    </div>
+    <div class="input-field col s6">
+      <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="employer.lastName" required>
+      <label [attr.data-error]="LastName.errors!=null?(LastName.errors.required?'Required field!':'Maximum 30 characters allowed'):''">Last Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <select name="Gender" #Gender="ngModel" [(ngModel)]="employer.gender" required>
+        <option value="Gender.Unknown" disabled selected>Choose</option>
+        <option value="Gender.Male">Male</option>
+        <option value="Gender.Female">Female</option>
+      </select>
+      <label [attr.data-error]="Gender.errors!=null?'Required field!':''">Gender</label>
+    </div>
+    <div class="input-field col s6">
+      <input type="text" name="DateOfBirth" #DateOfBirth="ngModel" [(ngModel)]="employer.dateOfBirth" required>
+      <label [attr.data-error]="DateOfBirth.errors!=null?'Required field!':''">Date of birth</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
